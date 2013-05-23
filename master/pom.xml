@@ -1,0 +1,370 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.honeycomb</groupId>
+  <artifactId>master</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>master Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+    <properties>
+        <!-- 主要依赖库的版本定义 -->
+        <spring.version>3.2.2.RELEASE</spring.version>
+        <shiro.version>1.2.1</shiro.version>
+        <ehcache.version>2.6.5</ehcache.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <logback.version>1.0.11</logback.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <logback.version>1.0.11</logback.version>
+        <junit.version>4.11</junit.version>
+        <jetty.version>7.6.10.v20130312</jetty.version>
+        <jcaptcha.version>1.0-RC6</jcaptcha.version>
+        <velocity.version>1.5</velocity.version>
+        <velocity-tools.version>1.4</velocity-tools.version>
+        <mybatis.version>3.1.1</mybatis.version>
+        <mybatis-spring.version>1.1.1</mybatis-spring.version>
+        <druid.version>0.2.9</druid.version>
+        <aspectjweaver.version>1.7.1</aspectjweaver.version>
+        <jackson.version>1.9.11</jackson.version>
+        <fastjson.version>1.1.26</fastjson.version>
+        <fileupload.version>1.2.2</fileupload.version>
+        <!-- Plugin的属性定义 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.6</jdk.version>
+        <!-- 项目属性 -->
+        <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+        <jdbc.driver.version>5.1.9</jdbc.driver.version>
+    </properties>
+    
+    <repositories>
+        <!-- 如有Nexus私服, 取消注释并指向正确的服务器地址.
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://localhost:8081/nexus/content/groups/public</url> 
+        </repository>
+        -->
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2</url>  
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        
+        <repository>
+            <id>repo.springsource.org</id>
+            <name>repo.springsource.org-releases</name>
+            <url>http://repo.springsource.org/libs-milestone-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!-- 设定插件仓库 如有Nexus私服, 取消注释并指向正确的服务器地址. 
+    <pluginRepositories> 
+        <pluginRepository> 
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://localhost:8081/nexus/content/groups/public</url> 
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    -->
+  
+  <dependencies>
+  
+    <!-- SPRING basic begin(一般不需要显式定义) -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+    <!-- jcaptcha验证码 -->
+    <dependency>
+        <groupId>com.octo.captcha</groupId>
+        <artifactId>jcaptcha-all</artifactId>
+        <version>${jcaptcha.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring</artifactId>
+            </exclusion>  
+            <exclusion>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+            </exclusion>                
+        </exclusions>
+    </dependency>   
+    <!-- SPRING basic end -->
+    
+    <!-- AOP begin-->
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.7.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.7.2</version>
+        <scope>runtime</scope>
+    </dependency>
+    <!-- AOP end -->
+    
+    <!-- jdbc driver -->
+    <dependency>
+        <groupId>${jdbc.driver.groupId}</groupId>
+        <artifactId>${jdbc.driver.artifactId}</artifactId>
+        <version>${jdbc.driver.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    
+    <!-- WEB begin -->
+    <!-- spring mvc -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+    <!-- j2ee web spec -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+    <!-- WEB end --> 
+    
+    <!-- fileupload -->
+    <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>${fileupload.version}</version>
+    </dependency>
+    
+    <!-- SECURITY begin -->
+    <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-core</artifactId>
+        <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-spring</artifactId>
+        <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-web</artifactId>
+        <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-ehcache</artifactId>
+        <version>${shiro.version}</version>
+    </dependency>
+    <!-- SECURITY end -->
+    
+    <!-- CACHE begin -->            
+    <!-- ehcache -->
+    <dependency>
+        <groupId>net.sf.ehcache</groupId>
+        <artifactId>ehcache-core</artifactId>
+        <version>${ehcache.version}</version>
+    </dependency>
+    <!-- CACHE end -->
+    
+    <!-- LOGGING begin -->
+    <!-- slf4j -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    
+    <!-- logback -->
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+    </dependency>
+    
+    <!-- log4j 实际调用slf4j -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>log4j-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    
+    <!-- common-logging 实际调用slf4j -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    
+    <!-- java.util.logging 实际调用slf4j -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jul-to-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+        </dependency>
+    <!-- LOGGING end -->
+    
+    <!-- GENERAL UTILS begin -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+    </dependency>
+    
+    <!--velocity template engine -->
+    <dependency>  
+        <groupId>org.apache.velocity</groupId>  
+        <artifactId>velocity</artifactId>  
+        <version>${velocity.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>velocity-tools</groupId>  
+        <artifactId>velocity-tools-generic</artifactId>  
+        <version>${velocity-tools.version}</version>  
+    </dependency>
+    <dependency>
+        <groupId>velocity-tools</groupId>
+        <artifactId>velocity-tools-view</artifactId>
+        <version>${velocity-tools.version}</version>
+    </dependency>
+  
+    <!-- Mybatis ORM -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>${mybatis.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>${mybatis-spring.version}</version>
+    </dependency>
+  
+    <!-- alibaba druid -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${aspectjweaver.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>${jackson.version}</version>
+    </dependency>
+    
+    <!-- alibaba fastjson -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+    </dependency>
+  
+    <!-- TEST begin -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- spring -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- jetty -->
+    <dependency>
+        <groupId>org.eclipse.jetty.aggregate</groupId>
+        <artifactId>jetty-webapp</artifactId>
+        <version>${jetty.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-jsp</artifactId>
+        <version>${jetty.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-server</artifactId>
+        <version>${jetty.version}</version>
+        <scope>test</scope>
+    </dependency>       
+    <!-- TEST end -->
+    
+    
+  </dependencies>
+  
+  
+  
+  <build>
+    <finalName>master</finalName>
+  </build>
+</project>
