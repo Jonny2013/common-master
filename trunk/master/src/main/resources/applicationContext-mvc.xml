@@ -6,8 +6,14 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/mvc 
 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+	<!-- 对静态资源文件的访问 -->
+	<mvc:resources mapping="/styles/**" location="/styles/" />   
+
+    <!-- 启动SpringMVC的注解功能，它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<context:component-scan base-package="sy.controller" />
+	<context:component-scan base-package="com.master.controller" />
 
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -29,6 +35,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <!-- velocity视图解析器 -->
     <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="requestContextAttribute" value="rc"/>
         <property name="cache" value="true"/>
         <property name="prefix" value="/"/>
         <property name="suffix" value=".vm"/>
@@ -50,7 +57,45 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 		   </props>  
 		</property>  
     </bean>
+    
+    <!-- 定义无Controller的path<->view直接映射 -->
+    <mvc:view-controller path="/" view-name="redirect:/login"/>
+    
+     <!-- 全局异常配置 start -->  
+     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+         <property name="exceptionMappings">  
+             <props>
+                 <prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>               
+                 <prop key="java.lang.Throwable">error/500</prop>
+             </props>  
+         </property>  
+         <property name="statusCodes">  
+             <props>  
+                 <prop key="500">500</prop>  
+                 <prop key="404">404</prop>
+                 <prop key="403">403</prop>  
+             </props>  
+         </property>  
+         <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->  
+         <property name="warnLogCategory" value="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"/>  
+         <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->  
+         <property name="defaultErrorView" value="error/500"/>  
+         <!-- 默认HTTP状态码 ，返回错误默认设置的状态码-->  
+         <property name="defaultStatusCode" value="200"/>  
+     </bean>  
+     <!-- 全局异常配置 end -->
 
+    <!-- 支持 Shiro对Controller的方法级AOP安全控制 begin-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <!-- 支持 Shiro对Controller的方法级AOP安全控制 end  -->  
+
+    <!-- 文件下载 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding">
 			<value>UTF-8</value>
