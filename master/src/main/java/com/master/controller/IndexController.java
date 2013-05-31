@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.master.service.impl.RoleServiceImpl;
+
 /** 
  * 	
  * @author 	<a href="mailto:ketayao@gmail.com">ketayao</a>
@@ -39,7 +41,7 @@ public class IndexController {
 	private static final String INDEX = "admin/management/index/index";
 	private static final String UPDATE_PASSWORD = "admin/management/index/updatePwd";
 	private static final String UPDATE_BASE = "admin/management/index/updateBase";
-	 
+	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String index(HttpServletRequest request) {
 		/*Subject subject = SecurityUtils.getSubject();
