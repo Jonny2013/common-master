@@ -1,1 +1,15 @@
-#macro( test ) PPPPPPPPJJJJJJ #end
+#macro(accordion_header $title)
+    <div class="accordionHeader">
+        <h2><span>Folder</span>${title}</h2>
+    </div>
+#end
+    
+#macro(accordion_content $url $name)
+    <div class="accordionContent">
+        <ul>
+            <li>
+                <a href="$url" target="navTab">${name}</a>
+            </li>   
+        </ul>
+    </div>
+#end
