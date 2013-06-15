@@ -5,6 +5,16 @@
 <title>测试</title>
 </head>
 <body>
-	dsddd
+	
+    <table>
+        <tr><td>id</td><td>info1</td><td>info2</td></tr>
+        #foreach( $test in $testList) 
+        <tr><td>$!test.id</td><td>$!test.info1</td><td>$!test.info2</td></tr>
+        #end 
+    </table>
+    
+    $!page.pageStr
+    
+
 </body>
 </html>
