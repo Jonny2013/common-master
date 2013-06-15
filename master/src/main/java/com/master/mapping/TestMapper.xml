@@ -2,10 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.master.dao.TestMapper" >
 
-  <resultMap id="BaseResultMap" type="com.master.model.Test" >
+  <resultMap id="baseResultMap" type="com.master.model.Test" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="info1" property="info1" jdbcType="VARCHAR" />
     <result column="info2" property="info2" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <select id="listPageTest" parameterType="Page" resultMap="baseResultMap">
+        select * from test
+  </select>
   
 </mapper>
