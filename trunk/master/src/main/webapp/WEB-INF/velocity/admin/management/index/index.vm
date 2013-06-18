@@ -79,11 +79,37 @@ $(function(){
 		</div>
 		<div id="sidebar">
 			<div class="toggleCollapse"><h2>菜单</h2><div>collapse</div></div>
-            ##accordion_header("")
-            #accordion_content("ddd","用户管理")
-            #accordion_content("cc","角色管理")
-            #accordion_content("cc","模块管理")
-            #accordion_content("cc","组织管理")
+            
+ 
+            <div class="accordion" fillSpace="sidebar">
+            <div class="accordionHeader">
+                <h2><span>Folder</span>安全管理</h2>
+            </div>
+            <div class="accordionContent">
+                <ul class="tree treeFolder">
+                    <li><a href="" target="navTab">组织管理</a></li>
+                    <li><a href="" target="navTab">用户管理</a></li>
+                    <li><a href="" target="navTab">模块管理</a></li>
+                    <li><a href="" target="navTab">角色管理</a></li>
+                    <li><a href="" target="navTab">组织管理</a></li>
+                    <li><a href="${rc.contextPath}/test" target="navTab">测试分页</a></li>
+                </ul>
+            </div>
+            <div class="accordionHeader">
+                <h2><span>Folder</span>测试</h2>
+            </div>
+            <div class="accordionContent">
+                <ul class="tree treeFolder">
+                    <li><a href="tabsPage.html" target="navTab">测试应用</a>
+                        <ul>
+                            <li><a href="main.html" target="navTab" rel="main">我的主页</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            
+            
 		</div>
 	</div>
 	<div id="container">
