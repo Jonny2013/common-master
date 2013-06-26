@@ -6,5 +6,7 @@ import com.master.model.Test;
 import com.master.plugin.Page;
 
 public interface TestService {
-	List<Test> listPageTest(Page page);
+	public List<Test> listPageTest(Page page);
+	
+	public List<Test> listPageTest2(Test test);
 }

@@ -8,6 +8,7 @@ import com.master.plugin.Page;
 
 public interface TestMapper {
 
-	List<Test> listPageTest(Page page);
+	public List<Test> listPageTest(Page page);
 	
+	public List<Test> listPageTest2(Test test);;
 }

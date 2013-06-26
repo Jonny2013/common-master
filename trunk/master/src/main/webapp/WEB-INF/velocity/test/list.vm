@@ -15,7 +15,7 @@
             <ul class="searchContent">
                 <li>
                     <label>info1：</label>
-                    <input type="text" name="keywords" value=""/>
+                    <input type="text" name="info1" value="$!{test.info1}"/>
                 </li>
             </ul>
             <div class="subBar">
@@ -64,7 +64,9 @@
 
 <form id="pagerForm" action="${rc.contextPath}/test" method="post">
     <input type="hidden" name="pageNum" value="1" /><!--【必须】value=1可以写死-->
-    <input type="hidden" name="numPerPage" value="10">
+    <input type="hidden" name="numPerPage" value="10"/>
+    <!--分页缓存-->    
+    <input type="hidden" name="info1" value="$!{test.info1}"/>
 </form> 
 
 </body>

@@ -29,5 +29,10 @@ public class TestServiceImpl implements TestService {
 		return testMapper.listPageTest(page);
 	}
 
+	public List<Test> listPageTest2(Test test) {
+		// TODO Auto-generated method stub
+		return testMapper.listPageTest2(test);
+	}
+
 
 }

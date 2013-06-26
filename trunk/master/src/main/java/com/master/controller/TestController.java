@@ -23,8 +23,9 @@ public class TestController {
 	private TestService testService;
 	
 	@RequestMapping()
-	public String testpagelist(Model model,Page page,HttpServletRequest request) {
-		List<Test> infoList = testService.listPageTest(page);
+	public String testpagelist(Model model,Page page,Test test) {
+		test.setPage(page);
+		List<Test> infoList = testService.listPageTest2(test);
 		model.addAttribute("testList", infoList);
 		model.addAttribute("page", page);
 		return "test/list";
