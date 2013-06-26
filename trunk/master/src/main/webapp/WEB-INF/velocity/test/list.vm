@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KETA平台</title>
+<link href="${rc.contextPath}/styles/formValidator.2.2.1/pagination.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/css/core.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form method="post" onsubmit="return navTabSearch(this)" action="${rc.contextPath}/test">
+    <div class="pageHeader">
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>info1：</label>
+                    <input type="text" name="keywords" value=""/>
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>                        
+                    <li><div class="button"><div class="buttonContent"><button type="submit">搜索</button></div></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="pageContent">
+
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a class="magnifier" target="dialog" mask="true" width="530" height="250" href=""><span>查看任务</span></a></li>
+            <li><a class="add" target="dialog" mask="true" width="530" height="250" href=""><span>添加任务</span></a></li>
+            <li><a class="edit" target="dialog" mask="true" width="530" height="250" href=""><span>编辑任务</span></a></li>
+            <li><a class="delete" target="selectedTodo" rel="ids" href="" title="确认要删除选定任务?"><span>删除任务</span></a></li>
+        </ul>
+    </div>
+    
+    <table class="table" layoutH="138" width="100%">
+        <thead>
+            <tr>
+                <th width="200">id</th>
+                <th width="200">info1</th>
+                <th>info2</th>
+            </tr>
+        </thead>
+        <tbody>
+            #foreach( $test in $testList) 
+                <tr><td>$!test.id</td><td>$!test.info1</td><td>$!test.info2</td></tr>
+            #end
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="panelBar">
+    <div class="pages">
+        <span>总条数: $!{page.totalResult}</span>
+    </div>
+    <div class="pagination" targetType="navTab" totalCount=$!{page.totalResult} numPerPage=10 pageNumShown=10 currentPage=$!{page.pageNum}></div>
+</div>
+
+<form id="pagerForm" action="${rc.contextPath}/test" method="post">
+    <input type="hidden" name="pageNum" value="1" /><!--【必须】value=1可以写死-->
+    <input type="hidden" name="numPerPage" value="10">
+</form> 
+
+</body>
+</html>

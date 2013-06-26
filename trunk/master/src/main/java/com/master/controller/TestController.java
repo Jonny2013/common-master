@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,13 @@ public class TestController {
 	@Autowired
 	private TestService testService;
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public String testpagelist(Model model,Page page) {
+	@RequestMapping()
+	public String testpagelist(Model model,Page page,HttpServletRequest request) {
 		List<Test> infoList = testService.listPageTest(page);
 		model.addAttribute("testList", infoList);
 		model.addAttribute("page", page);
-		return "test";
+		return "test/list";
+		//return "test";
 	}
 
 }
