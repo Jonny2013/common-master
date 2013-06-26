@@ -1,5 +1,7 @@
 package com.master.model;
 
+import com.master.plugin.Page;
+
 public class Test {
 	//主键id
 	private Long id;
@@ -7,7 +9,17 @@ public class Test {
 	private String info1;
 	//info2
 	private String info2;
+	//分页
+	private Page page;
 	
+	public Page getPage() {
+		if(page==null)
+			page = new Page();
+		return page;
+	}
+	public void setPage(Page page) {
+		this.page = page;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -12,4 +12,13 @@
         select * from test
   </select>
   
+  
+    <select id="listPageTest2" parameterType="Test" resultMap="baseResultMap">
+        select * from test 
+        where 1=1 
+        <if test="info1!=null and info1!=''">
+            and info1 like "%"#{info1}"%" 
+        </if>
+    </select>
+  
 </mapper>

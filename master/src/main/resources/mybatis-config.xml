@@ -5,6 +5,7 @@
 
     <typeAliases>
         <typeAlias type="com.master.plugin.Page" alias="Page"/>
+        <typeAlias type="com.master.model.Test" alias="Test"/>
     </typeAliases>
     
 	<plugins>
