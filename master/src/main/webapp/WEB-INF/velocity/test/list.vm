@@ -34,13 +34,14 @@
             <li><a class="magnifier" target="dialog" mask="true" width="530" height="250" href=""><span>查看任务</span></a></li>
             <li><a class="add" target="dialog" mask="true" width="530" height="250" href=""><span>添加任务</span></a></li>
             <li><a class="edit" target="dialog" mask="true" width="530" height="250" href=""><span>编辑任务</span></a></li>
-            <li><a class="delete" target="selectedTodo" rel="ids" href="" title="确认要删除选定任务?"><span>删除任务</span></a></li>
+            <li><a class="delete" target="selectedTodo" rel="ids" href="${rc.contextPath}/test/delete" title="确认要删除选定任务?"><span>删除任务</span></a></li>
         </ul>
     </div>
     
     <table class="table" layoutH="138" width="100%">
         <thead>
             <tr>
+                <th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
                 <th width="200">id</th>
                 <th width="200">info1</th>
                 <th>info2</th>
@@ -48,7 +49,7 @@
         </thead>
         <tbody>
             #foreach( $test in $testList) 
-                <tr><td>$!test.id</td><td>$!test.info1</td><td>$!test.info2</td></tr>
+                <tr><td><input name="ids" value="${test.id}" type="checkbox"></td><td>$!test.id</td><td>$!test.info1</td><td>$!test.info2</td></tr>
             #end
         </tbody>
     </table>
@@ -62,7 +63,7 @@
     <div class="pagination" targetType="navTab" totalCount=$!{page.totalResult} numPerPage=10 pageNumShown=10 currentPage=$!{page.pageNum}></div>
 </div>
 
-<form id="pagerForm" action="${rc.contextPath}/test" method="post">
+<form id="pagerForm" action="${rc.contextPath}/test/list" method="post">
     <input type="hidden" name="pageNum" value="1" /><!--【必须】value=1可以写死-->
     <input type="hidden" name="numPerPage" value="10"/>
     <!--分页缓存-->    

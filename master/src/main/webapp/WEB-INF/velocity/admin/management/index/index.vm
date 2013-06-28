@@ -93,7 +93,7 @@ $(function(){
                     <li><a href="" target="navTab">模块管理</a></li>
                     <li><a href="" target="navTab">角色管理</a></li>
                     <li><a href="" target="navTab">组织管理</a></li>
-                    <li><a href="${rc.contextPath}/test" rel="moduleListNav_1" target="navTab">测试分页</a></li>
+                    <li><a href="${rc.contextPath}/test/list" rel="moduleListNav_1" target="navTab">测试分页</a></li>
                 </ul>
             </div>
             <div class="accordionHeader">
