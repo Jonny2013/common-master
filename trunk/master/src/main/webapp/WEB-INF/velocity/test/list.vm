@@ -31,7 +31,7 @@
 
     <div class="panelBar">
         <ul class="toolBar">
-            <li><a class="magnifier" target="dialog" mask="true" width="530" height="250" href=""><span>查看任务</span></a></li>
+            <li><a class="magnifier" target="dialog" mask="true" width="530" height="250" href="${rc.contextPath}/test/view/{slt_uid}"><span>查看任务</span></a></li>
             <li><a class="add" target="dialog" mask="true" width="530" height="250" href="${rc.contextPath}/test/create"><span>添加任务</span></a></li>
             <li><a class="edit" target="dialog" mask="true" width="530" height="250" href="${rc.contextPath}/test/update/{slt_uid}"><span>编辑任务</span></a></li>
             <li><a class="delete" target="selectedTodo" rel="ids" href="${rc.contextPath}/test/delete" title="确认要删除选定任务?"><span>删除任务</span></a></li>
