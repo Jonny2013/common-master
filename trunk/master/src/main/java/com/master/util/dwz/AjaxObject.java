@@ -1,18 +1,4 @@
-/**
- * <pre>
- * Copyright:		Copyright(C) 2011-2012, ketayao.com
- * Filename:		com.ygsoft.util.dwz.AjaxObject.java
- * Class:			AjaxObject
- * Date:			2012-6-8
- * Author:			<a href="mailto:ketayao@gmail.com">ketayao</a>
- * Version          1.1.0
- * Description:		
- *
- * </pre>
- **/
- 
 package com.master.util.dwz;
-
 /** 
  * 	
  * navTabAjaxDone是DWZ框架中预定义的表单提交回调函数．
@@ -121,8 +107,9 @@ public class AjaxObject {
 	 * 设置 statusCode 的值  
 	 * @param statusCode
 	 */
-	public void setStatusCode(int statusCode) {
+	public AjaxObject setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
+		return this;
 	}
 
 	/**  
@@ -137,8 +124,9 @@ public class AjaxObject {
 	 * 设置 message 的值  
 	 * @param message
 	 */
-	public void setMessage(String message) {
+	public AjaxObject setMessage(String message) {
 		this.message = message;
+		return this;
 	}
 
 	/**  
@@ -153,8 +141,9 @@ public class AjaxObject {
 	 * 设置 forwardUrl 的值  
 	 * @param forwardUrl
 	 */
-	public void setForwardUrl(String forwardUrl) {
+	public AjaxObject setForwardUrl(String forwardUrl) {
 		this.forwardUrl = forwardUrl;
+		return this;
 	}
 
 	/**  
@@ -169,8 +158,9 @@ public class AjaxObject {
 	 * 设置 rel 的值  
 	 * @param rel
 	 */
-	public void setRel(String rel) {
+	public AjaxObject setRel(String rel) {
 		this.rel = rel;
+		return this;
 	}
 
 	/**  
@@ -185,8 +175,9 @@ public class AjaxObject {
 	 * 设置 callbackType 的值  
 	 * @param callbackType
 	 */
-	public void setCallbackType(String callbackType) {
+	public AjaxObject setCallbackType(String callbackType) {
 		this.callbackType = callbackType;
+		return this;
 	}
 	
 	/**  
@@ -201,8 +192,9 @@ public class AjaxObject {
 	 * 设置 navTabId 的值  
 	 * @param navTabId
 	 */
-	public void setNavTabId(String navTabId) {
+	public AjaxObject setNavTabId(String navTabId) {
 		this.navTabId = navTabId;
+		return this;
 	}
 	
 	public static AjaxObject newOk(String message) {

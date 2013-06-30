@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.master.model.Test;
 import com.master.plugin.Page;
@@ -34,12 +35,12 @@ public class TestController {
 	}
 	
 	@RequestMapping(value="delete",method=RequestMethod.POST)
-	public String deleteTest(Long ids[]){
-		String[] titles = new String[ids.length];
+	public @ResponseBody String deleteTest(Long ids[]){
 		for (int i = 0; i < ids.length; i++) {
-			
+			Long id = Long.valueOf(ids[i]);
+			testService.deleteTestById(id);
 		}
-		return "";
+		return AjaxObject.newOk("任务删除成功！").setCallbackType("").toString();
 	}
 
 }

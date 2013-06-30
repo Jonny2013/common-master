@@ -9,4 +9,7 @@ public interface TestService {
 	public List<Test> listPageTest(Page page);
 	
 	public List<Test> listPageTest2(Test test);
+	
+	public void deleteTestById(Long id);
+	
 }
