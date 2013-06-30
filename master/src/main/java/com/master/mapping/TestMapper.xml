@@ -19,10 +19,39 @@
         <if test="info1!=null and info1!=''">
             and info1 like "%"#{info1}"%" 
         </if>
+            order by id desc
     </select>
     
     <delete id="deleteTestById" parameterType="long">
         DELETE FROM test WHERE id=#{id}
     </delete>
+    
+    <insert id="insert" parameterType="Test" keyProperty="id" keyColumn="id">
+        INSERT INTO test (info1, info2)
+		VALUES
+		    (#{info1,jdbcType=VARCHAR},#{info2,jdbcType=VARCHAR})
+    </insert>
+    
+    <select id="getObject" parameterType="long" resultMap="baseResultMap">
+        SELECT
+		    *
+		FROM
+		    test
+		WHERE
+		    id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <update id="updateObject" parameterType="Test" >
+        UPDATE test 
+        <set>
+            <if test="info1 != null" >
+                info1=#{info1,jdbcType=VARCHAR},
+            </if>
+            <if test="info2 != null">
+                info2=#{info2,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE ID=#{id,jdbcType=INTEGER}
+    </update>
   
 </mapper>

@@ -12,4 +12,10 @@ public interface TestService {
 	
 	public void deleteTestById(Long id);
 	
+	public void insert(Test test);
+	
+	public Test getObject(Long id);
+	
+	public void updateObject(Test test);
+	
 }
