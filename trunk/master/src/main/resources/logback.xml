@@ -16,8 +16,8 @@
 		</encoder>
 	</appender>
 
-	<!-- project default level
-	<logger name="com.ketayao" level="INFO" /> -->
+	<!-- project default level -->
+	<logger name="com.master" level="INFO" />
 
 
 	<root level="info">
