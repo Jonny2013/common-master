@@ -19,4 +19,5 @@ public interface TestMapper {
 	public Test getObject(Long id);
 	//更新Test
 	public void updateObject(Test test);
+	//
 }

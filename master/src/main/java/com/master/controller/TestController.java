@@ -67,5 +67,12 @@ public class TestController {
 		testService.updateObject(test);
 		return AjaxObject.newOk("修改成功！").toString();
 	}
+	
+	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
+	public String preView(@PathVariable Long id, Map<String, Object> map) {
+		Test test = testService.getObject(id);
+		map.put("test", test);
+		return "test/view";
+	}
 
 }
