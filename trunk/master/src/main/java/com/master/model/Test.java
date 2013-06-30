@@ -4,7 +4,7 @@ import com.master.plugin.Page;
 
 public class Test {
 	//主键id
-	private Long id;
+	private Integer id;
 	//info1
 	private String info1;
 	//info2
@@ -20,10 +20,11 @@ public class Test {
 	public void setPage(Page page) {
 		this.page = page;
 	}
-	public Long getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getInfo1() {

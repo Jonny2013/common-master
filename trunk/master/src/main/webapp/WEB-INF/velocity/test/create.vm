@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KETA平台</title>
+<link href="${rc.contextPath}/styles/formValidator.2.2.1/pagination.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/css/core.css" rel="stylesheet" type="text/css" />
+<link href="${rc.contextPath}/styles/management/themes/css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="pageContent">
+    <form method="post" action="${rc.contextPath}/test/create" class="required-validate pageForm" onsubmit="return validateCallback(this, dialogReloadNavTab);">
+        <div class="pageFormContent" layoutH="58">
+        <p>
+            <label>info1：</label>
+            <input type="text" name="info1" class="required" size="32" maxlength="32"/>
+        </p>
+        <p>
+            <label>info2：</label>
+            <input type="text" name="info2" class="required" size="32" maxlength="32"/>
+        </p>
+        </div>
+        
+        <div class="formBar">
+            <ul>
+                <li><div class="button"><div class="buttonContent"><button type="submit">确定</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">关闭</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

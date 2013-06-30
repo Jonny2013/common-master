@@ -39,5 +39,20 @@ public class TestServiceImpl implements TestService {
 		testMapper.deleteTestById(id);
 	}
 
+	public void insert(Test test) {
+		// TODO Auto-generated method stub
+		testMapper.insert(test);
+	}
+
+	public Test getObject(Long id) {
+		// TODO Auto-generated method stub
+		return testMapper.getObject(id);
+	}
+
+	public void updateObject(Test test) {
+		// TODO Auto-generated method stub
+		testMapper.updateObject(test);
+	}
+
 
 }
