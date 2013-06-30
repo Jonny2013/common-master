@@ -9,7 +9,7 @@
 <link href="${rc.contextPath}/styles/management/themes/css/login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form method="post" onsubmit="return navTabSearch(this)" action="${rc.contextPath}/test">
+<form method="post" onsubmit="return navTabSearch(this)" action="${rc.contextPath}/test/list">
     <div class="pageHeader">
         <div class="searchBar">
             <ul class="searchContent">
