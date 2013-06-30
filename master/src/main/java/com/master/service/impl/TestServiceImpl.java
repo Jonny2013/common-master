@@ -34,5 +34,10 @@ public class TestServiceImpl implements TestService {
 		return testMapper.listPageTest2(test);
 	}
 
+	public void deleteTestById(Long id) {
+		// TODO Auto-generated method stub
+		testMapper.deleteTestById(id);
+	}
+
 
 }

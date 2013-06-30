@@ -20,5 +20,9 @@
             and info1 like "%"#{info1}"%" 
         </if>
     </select>
+    
+    <delete id="deleteTestById" parameterType="long">
+        DELETE FROM test WHERE id=#{id}
+    </delete>
   
 </mapper>
